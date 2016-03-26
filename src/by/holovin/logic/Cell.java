@@ -1,6 +1,6 @@
 package by.holovin.logic;
 
-class Cell {
+public class Cell {
     private int value;
 
     int getValue() {
@@ -18,31 +18,20 @@ class Cell {
     Cell() {
         value = 0;
     }
-
-    Cell(int value) {
+    
+    public Cell(int value) {
         this.value = value;
     }
-
-    private void reset() {
-        value = 0;
+    
+    Cell(Cell cell) {
+        this(cell.getValue());
     }
 
     void next() {
         value++;
     }
 
-    public boolean doSum(Cell cell) {
-        if (isEmpty() || isCanAdd(this, cell)) {
-            return false;
-        }
-
-        this.next();
-        cell.reset();
-
-        return true;
-    }
-
-    public static boolean isCanAdd(Cell one, Cell two) {
+    static boolean isCanAdd(Cell one, Cell two) {
         return one.getValue() == two.getValue();
     }
 
@@ -50,4 +39,5 @@ class Cell {
     public String toString() {
         return Values.getValue(value);
     }
+
 }
